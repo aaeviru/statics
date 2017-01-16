@@ -5,7 +5,7 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-x = []
+x = [3,4,5,6,7]
 w = []
 y = []
 z = [1.0/4,1.0/5,1.0/6,1.0/7,1.0/8]
@@ -18,14 +18,16 @@ if len(sys.argv) < 3:
 	fin = open(sys.argv[1],"r")
 	i = 4
 	for line in fin:
-		x.append(i)
-		i = i+1
 		y.append(float(line))
 	plt.figure(1)
+	w = y[:5]
+	y = y[5:]
 	ax=plt.gca()  
 	ax.set_xticks(x)
 	#ax.set_xticklabels(('3','','4','','5','','6','','7'))
-	plt.plot(x,y,'o-',label = 'HDGA')
+
+	plt.plot(x,w,'o-',label = 'max')
+	plt.plot(x,y,'o-',label = 'min')
 	plt.plot(x,z,'ro-',label = 'ideal value')
 	plt.xlabel('number of dummy query',fontsize=30)
 	plt.ylabel('precision of attack',fontsize=30)

@@ -5,10 +5,11 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-x = []
+x = [4,5,6,7,8]
 w = []
 y = []
 z = []
+ideal = [1.0/4,1.0/5,1.0/6,1.0/7,1.0/8]
 
 a = []
 b = []
@@ -18,19 +19,25 @@ if len(sys.argv) < 3:
 	fin = open(sys.argv[1],"r")
 	i = 4
 	for line in fin:
-		x.append(i)
-		i = i+1
 		y.append(float(line))
+	z = y[5:]
+	y = y[:5]
 	plt.figure(1)
 	ax=plt.gca()  
-	ax.set_xticklabels(('4', '5', '6', '7','8','9','10'))
-	plt.plot(x,y)
+	ax.set_xticks(x)
+	plt.plot(x,y,'o-',label = 'LSA')
+	plt.plot(x,z,'o-',label = 'LDA')
+	plt.plot(x,ideal,'ro-',label = 'ideal')
 	plt.xlabel('BktSz',fontsize=30)
-	plt.ylim([0.8,1])
+	plt.ylabel('precision of attack',fontsize=30)
+
+	plt.ylim([0,1])
 	for tick in ax.xaxis.get_major_ticks():
 	    tick.label1.set_fontsize(20)
 	for tick in ax.yaxis.get_major_ticks():
 	    tick.label1.set_fontsize(20)
+	plt.legend(loc = 'best')
+
 	plt.show()
 else:
 	if int(sys.argv[2]) < int(sys.argv[3]):
