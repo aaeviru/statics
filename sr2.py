@@ -24,14 +24,16 @@ if len(sys.argv) < 3:
 	plt.figure(1)
 	a = y[:2]
 	b = y[2:4]
+	#c = y[4:6]
 
 	ax=plt.gca()  
 	ax.set_xticks(x)
 	#ax.set_xticklabels(('3','7'))
 	wideth = 0.15
-	#plt.plot(x,a,'ro-',label = 'HDGA')
+	#plt.plot(x,a,'yo-',label = 'HDGA')
 	plt.plot(x,a,'bo-',label = 'QO')
 	plt.plot(x,b,'go-',label = 'QO2')
+	plt.plot(x,[1.0/4,1.0/8],'ro-',label = 'ideal')
 	#plt.bar([i+0.55 for i in x],d,wideth,None,color = 'y',label = 'cos-near')
 	#plt.bar([i+0.7 for i in x],e,wideth,None,color = 'c',label = 'cos-far')
 	plt.ylabel('precision of attack',fontsize=30)
