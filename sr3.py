@@ -5,7 +5,7 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-x = [3,7]
+x = [0]
 w = []
 y = []
 z = [1.0/4,1.0/5,1.0/6,1.0/7,1.0/8]
@@ -22,26 +22,28 @@ if len(sys.argv) < 3:
 	for line in fin:
 		y.append(float(line))
 	plt.figure(1)
-	a = y[:2]
-	b = y[2:4]
+	a = y[0]
+	b = y[1]
+	c = y[2]
+	d = y[3]
+	e = y[4]
 
 	ax=plt.gca()  
-	ax.set_xticks(x)
-	#ax.set_xticklabels(('3','7'))
+	ax.set_xticks([0.5])
+	ax.set_xticklabels((''))
 	wideth = 0.15
-	#plt.plot(x,a,'ro-',label = 'HDGA')
-	plt.plot(x,a,'bo-',label = 'QO')
-	plt.plot(x,b,'go-',label = 'QO2')
-	#plt.bar([i+0.55 for i in x],d,wideth,None,color = 'y',label = 'cos-near')
-	#plt.bar([i+0.7 for i in x],e,wideth,None,color = 'c',label = 'cos-far')
+	plt.bar([i+0.1 for i in x],a,wideth,None,color = 'r',label = 'ideal')
+	plt.bar([i+0.25 for i in x],b,wideth,None,color = 'b',label = 'MTA-LDA')
+	plt.bar([i+0.4 for i in x],c,wideth,None,color = 'g',label = 'MTA-LSA')
+	plt.bar([i+0.55 for i in x],d,wideth,None,color = 'y',label = 'Simatt2')
+	plt.bar([i+0.7 for i in x],e,wideth,None,color = 'c',label = 'Simatt')
 	plt.ylabel('precision of attack',fontsize=30)
-	plt.xlabel('number of dummy query',fontsize=30)
 	plt.ylim([0,1])
-	plt.xlim(x)
+	plt.xlim([0,1])
 	for tick in ax.xaxis.get_major_ticks():
 	    tick.label1.set_fontsize(20)
 	for tick in ax.yaxis.get_major_ticks():
 	    tick.label1.set_fontsize(20)
-	plt.legend(loc = 4,ncol=3)
+	plt.legend(loc = 1,ncol=3)
 
 	plt.show()

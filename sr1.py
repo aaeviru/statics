@@ -26,8 +26,8 @@ if len(sys.argv) < 3:
 	ax.set_xticks(x)
 	#ax.set_xticklabels(('3','','4','','5','','6','','7'))
 
-	plt.plot(x,w,'o-',label = 'max')
-	plt.plot(x,y,'o-',label = 'min')
+	plt.plot(x,w,'o-',label = 'LSA')
+	plt.plot(x,y,'o-',label = 'LDA')
 	plt.plot(x,z,'ro-',label = 'ideal value')
 	plt.xlabel('number of dummy query',fontsize=30)
 	plt.ylabel('precision of attack',fontsize=30)
